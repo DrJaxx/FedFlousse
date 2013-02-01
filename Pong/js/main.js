@@ -1,6 +1,6 @@
 $(document).ready(function(){
-	var haut = 38;
-	var bas = 40;
+	var haut = 37;
+	var bas = 39;
 
 	var canvas = document.getElementById('pong'); //Choper la zone de l'écran
 	var ctx = canvas.getContext('2d'); //Pour définir l'élément canvas 
@@ -35,5 +35,4 @@ $(document).ready(function(){
 		requestAnimFrame(update());
 	}
 	update();
-
 });
