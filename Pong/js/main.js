@@ -17,15 +17,23 @@ $(document).ready(function(){
 	player.position = 25;
 
 	$(document).bind('keydown',function(e){
-		e.preventDefault();
 		if(e.keyCode == haut){
+			e.preventDefault();
 			player.position--;
 			ctx.fillRect(0,player.position,10,100);
 		} else if(e.keyCode == bas){
+			e.preventDefault();
 			player.position++;
 			ctx.fillRect(0,player.position,10,100);
 
 		}
 	});
+
+	var update = function()
+	{	
+		console.log("jojo");
+		requestAnimFrame(update());
+	}
+	update();
 
 });
