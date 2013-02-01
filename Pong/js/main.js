@@ -1,3 +1,10 @@
+window.requestAnimFrame = (function(callback) {
+        return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame ||
+        function(callback) {
+          window.setTimeout(callback, 1000 / 60);
+        };
+      })();
+
 var haut = 37;
 var bas = 39;
 
@@ -15,7 +22,8 @@ raquette.height = 100;
 var player = {};
 player.position = 25;
 
-var refreshPosition = function () {
+var refreshPosition = function () 
+{
 	if(ctrl.state == "up"){
 		player.position--;
 	} else if(ctrl.state == "down") {
@@ -23,10 +31,15 @@ var refreshPosition = function () {
 	} 
 }
 
+var draw = function()
+{
+	
+}
+
 var update = function()
 {	
 	refreshPosition();
 	draw();
-	requestAnimFrame(update);
+	requestAnimFrame(function() {update();});
 }
 update();
