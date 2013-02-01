@@ -14,7 +14,7 @@ ctrl.down = false;
 
 // Set value to true when the keys are pressed
 
-$(document).bind('keydown',function(){
+$(document).bind('keydown',function(e){
 		if(e.keyCode == ctrl.upvalue){
 			ctrl.up = true;
 			return false;
@@ -26,7 +26,7 @@ $(document).bind('keydown',function(){
 
 // Set value to false when the keys are released
 
-$(document).bind('keyup',function(){
+$(document).bind('keyup',function(e){
 		if(e.keyCode == ctrl.upvalue){
 			ctrl.up = false;
 			return false;

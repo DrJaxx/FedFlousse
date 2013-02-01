@@ -1,38 +1,32 @@
-$(document).ready(function(){
-	var haut = 37;
-	var bas = 39;
+var haut = 37;
+var bas = 39;
 
-	var canvas = document.getElementById('pong'); //Choper la zone de l'écran
-	var ctx = canvas.getContext('2d'); //Pour définir l'élément canvas 
-	
+var canvas = document.getElementById('pong'); //Choper la zone de l'écran
+var ctx = canvas.getContext('2d'); //Pour définir l'élément canvas 
 
-	ctx.fillStyle = "white";
-	ctx.fillRect(0,25,10,100);
 
-	var raquette = {};
-	raquette.width = 10;
-	raquette.height = 100;
+ctx.fillStyle = "white";
+ctx.fillRect(0,25,10,100);
 
-	var player = {};
-	player.position = 25;
+var raquette = {};
+raquette.width = 10;
+raquette.height = 100;
 
-	$(document).bind('keydown',function(e){
-		if(e.keyCode == haut){
-			e.preventDefault();
-			player.position--;
-			ctx.fillRect(0,player.position,10,100);
-		} else if(e.keyCode == bas){
-			e.preventDefault();
-			player.position++;
-			ctx.fillRect(0,player.position,10,100);
+var player = {};
+player.position = 25;
 
-		}
-	});
+var refreshPosition = function () {
+	if(ctrl.state == "up"){
+		player.position--;
+	} else if(ctrl.state == "down") {
+		player.position++;
+	} 
+}
 
-	var update = function()
-	{	
-		console.log("jojo");
-		requestAnimFrame(update());
-	}
-	update();
-});
+var update = function()
+{	
+	refreshPosition();
+	draw();
+	requestAnimFrame(update);
+}
+update();
