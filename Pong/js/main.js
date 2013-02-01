@@ -31,11 +31,6 @@ var refreshPosition = function ()
 	} 
 }
 
-var draw = function()
-{
-	
-}
-
 var update = function()
 {	
 	refreshPosition();
