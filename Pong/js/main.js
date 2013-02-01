@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	var haut = 38;
+	var bas = 40;
 
 	var canvas = document.getElementById('pong');
 	var ctx = canvas.getContext('2d');
@@ -12,10 +14,16 @@ $(document).ready(function(){
 	var player = {};
 	player.position = 25;
 
-	var haut = 38;
-	var bas = 40;
 	$(document).bind('keydown',function(e){
-		console.log(e.keyCode);
+		e.preventDefault();
+		if(e.keyCode == haut){
+			player.position--;
+			ctx.fillRect(0,player.position,10,100);
+		} else if(e.keyCode == bas){
+			player.position++;
+			ctx.fillRect(0,player.position,10,100);
+
+		}
 	});
 
 });
