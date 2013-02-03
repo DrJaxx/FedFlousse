@@ -15,20 +15,16 @@ var ctx = canvas.getContext('2d'); //Pour définir l'élément canvas
 ctx.fillStyle = "white";
 ctx.fillRect(0,25,10,100);
 
-var raquette = {};
-raquette.width = 10;
-raquette.height = 100;
-
 var player = {};
 player.position = 25;
 
 var refreshPosition = function () 
 {
-	if(ctrl.state == "up"){
-		player.position--;
-	} else if(ctrl.state == "down") {
-		player.position++;
-	} 
+	if(ctrl.state() == "up"){
+		player.position-=5;
+	} else if(ctrl.state() == "down") {
+		player.position+=5;
+	}
 }
 
 var update = function()
@@ -37,4 +33,5 @@ var update = function()
 	draw();
 	requestAnimFrame(function() {update();});
 }
+initControls();
 update();

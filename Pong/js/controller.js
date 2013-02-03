@@ -13,41 +13,43 @@ ctrl.up = false;
 ctrl.down = false;
 
 // Set value to true when the keys are pressed
+function initControls()
+{
+	$(document).bind('keydown',function(e){
+			if(e.keyCode == ctrl.upvalue){
+				ctrl.up = true;
+				return false;
+			} else if(e.keyCode == ctrl.downvalue){
+				ctrl.down = true;
+				return false;
+			}
+	});
 
-$(document).bind('keydown',function(e){
-		if(e.keyCode == ctrl.upvalue){
-			ctrl.up = true;
-			return false;
-		} else if(e.keyCode == ctrl.downvalue){
-			ctrl.down = true;
-			return false;
-		}
-});
+	// Set value to false when the keys are released
 
-// Set value to false when the keys are released
+	$(document).bind('keyup',function(e){
+			if(e.keyCode == ctrl.upvalue){
+				ctrl.up = false;
+				return false;
+			} else if(e.keyCode == ctrl.downvalue){
+				ctrl.down = false;
+				return false;
+			}
+	});
+}
 
-$(document).bind('keyup',function(e){
-		if(e.keyCode == ctrl.upvalue){
-			ctrl.up = false;
-			return false;
-		} else if(e.keyCode == ctrl.downvalue){
-			ctrl.down = false;
-			return false;
-		}
-});
 
 // 3 states possible for the controller : none, up, down.
 
 ctrl.state = function(){
-	if (ctrl.up == false && ctrl.down == false || ctrl.up == true && ctrl.down == true){
-		return "none";
-	}
-	else if (ctrl.up = true){
+	if (ctrl.up == true){
 		return "up";
 	}
-	else{
+	else if(ctrl.down == true){
 		return "down";
+
 	}
+	return "none";
 };
 
 
